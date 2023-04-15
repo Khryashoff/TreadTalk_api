@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from posts.models import Group, Post, Comment, User
+from posts.models import Group, Post, User
 
 from api.permissions import IsAuthorOrReadOnly
 from api.serializers import (UserSerializer, GroupSerializer,
@@ -55,9 +55,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         Возвращает queryset, который содержит все комментарии,
         связанные с определенным постом.
         """
-        post = get_object_or_404(Post, pk=self.kwargs.get('post_id'))
-        comment_queryset = Comment.objects.filter(post=post)
-        return comment_queryset
+        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
+        return post.comments.all()
 
     def perform_create(self, serializer):
         """

@@ -1,5 +1,4 @@
 from rest_framework import permissions
-from rest_framework.exceptions import PermissionDenied
 
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
@@ -16,5 +15,4 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if (request.method in permissions.SAFE_METHODS
                 or obj.author == request.user):
             return True
-        raise PermissionDenied('Вы не являетесь автором этой записи. '
-                               'Редактирование не доступно.')
+        return False
