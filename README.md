@@ -13,7 +13,7 @@
 
 ### Технологии
 Python 3.9.10  
-Django 2.2.19 обновлено до Django 4.2.16
+Django 2.2.16 обновлено до Django 4.2.16  
 ### Запуск проекта в режиме разработки
 - Установите и активируйте виртуальную среду
 - Установите зависимости из файла requirements.txt
@@ -24,5 +24,5 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
-### Authors
+### Автор
 Sergey Khryashchev (Khryashoff)
