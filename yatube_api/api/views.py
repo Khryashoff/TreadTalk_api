@@ -3,20 +3,11 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from posts.models import Group, Post, User
+from posts.models import Group, Post
 
 from api.permissions import IsAuthorOrReadOnly
-from api.serializers import (UserSerializer, GroupSerializer,
-                             PostSerializer, CommentSerializer)
-
-
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    Набор представлений для работы с пользователями.
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+from api.serializers import (GroupSerializer, PostSerializer,
+                             CommentSerializer)
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):

@@ -1,26 +1,6 @@
 from rest_framework import serializers
 
-from posts.models import Group, Post, Comment, User
-
-
-class UserSerializer(serializers.ModelSerializer):
-    """
-    Сериализатор модели User.
-
-    Model fields:
-        id: int - Идентификатор пользователя.
-        username: str - Имя пользователя.
-        posts: list - Список связанных записей, в виде идентификаторов.
-    """
-    posts = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field='posts'
-    )
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'posts')
+from posts.models import Group, Post, Comment
 
 
 class GroupSerializer(serializers.ModelSerializer):
